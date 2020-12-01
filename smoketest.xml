@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Enrollment test suite" verbose="1" >
+    <!--
+        <listeners>
+            <listener class-name="com.ienroll.base.TestListener"/>
+        </listeners>-->
+
+    <test name="MY Family Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="MPHASIS3" />
+        <parameter name="appURL" value="https://ienroll.indiainsure.com/MyFamily/" />
+        <parameter name="password" value="01011985" />
+        <classes>
+            <class name="com.Tests.MyFamilyTest" />
+        </classes>
+    </test>
+
+    <test name="Citi Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="CITIN3" />
+        <parameter name="password" value="15011989" />
+        <parameter name="appURL" value="https://ienroll.indiainsure.com/CITI" />
+        <classes>
+            <class name="com.Tests.CitiTest" />
+        </classes>
+    </test>
+
+    <test name="Zee Portal Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="ZEE3" />
+        <parameter name="password" value="15011985" />
+        <parameter name="appURL" value="https://ienroll.indiainsure.com/MyFamily/Zee" />
+        <classes>
+            <class name="com.Tests.ZeeTest" />
+        </classes>
+    </test>
+
+    <test name="Evexia Admin Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="ekta.shah@evexia.in " />
+        <parameter name="password" value="ekta@1234" />
+        <parameter name="appURL" value="https://corporate.evexia.in/admin/" />
+        <classes>
+            <class name="com.Tests.EvexiaAdminTest" />
+        </classes>
+    </test>
+
+    <test name="Evexia Emp Portal Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="prasannaksri55@gmail.com" />
+        <parameter name="password" value="Qazxsw@123" />
+        <parameter name="appURL" value="https://corporate.evexia.in/infodemo/" />
+        <classes>
+            <class name="com.Tests.EvexiaEmpTest" />
+        </classes>
+    </test>
+
+</suite>
