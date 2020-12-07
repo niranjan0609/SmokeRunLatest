@@ -20,6 +20,9 @@ public class EnrollmentPage {
     private By eCardMyFamily = By.id("EmpControl_lnkDownloadEcard");
     private By eCardCiti = By.id("lnkDownloadEcard");
     private By eCardZee = By.id("EmpControl_lnkDownloadEcard");
+    private By AdminUsernameTxt = By.id("txtUserName");
+    private By AdminPwdTxt = By.id("txtPassword");
+    private By AdminLoginBtnTxt = By.id("btnLogin");
 
 //Evexia Admin Locators
     private By UsernameEvTxt = By.name("email");
@@ -147,5 +150,23 @@ public class EnrollmentPage {
         driver.findElement(eCardZee).click();
         //Wait for download to finish
         Thread.sleep(5000);
+    }
+
+    public void enterAdminID(String username) {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(AdminUsernameTxt)));
+        driver.findElement(AdminUsernameTxt).clear();
+        driver.findElement(AdminUsernameTxt).sendKeys(username);
+    }
+
+    public void enterAdminPassword(String password) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(AdminPwdTxt)));
+        driver.findElement(AdminPwdTxt).clear();
+        driver.findElement(AdminPwdTxt).sendKeys(password);
+    }
+
+    public void clickOnLoginNow() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(AdminLoginBtnTxt)));
+        driver.findElement(AdminLoginBtnTxt).click();
     }
 }
