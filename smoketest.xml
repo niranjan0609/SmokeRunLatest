@@ -6,7 +6,7 @@
             <listener class-name="com.base.TestListener"/>
         </listeners>
 
-    <test name="MY Family Test">
+    <test name="MY Family Test Mphasis">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="MPHASIS3" />
         <parameter name="appURL" value="https://ienroll.indiainsure.com/MyFamily/" />
