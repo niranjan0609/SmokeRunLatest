@@ -16,7 +16,7 @@
         </classes>
     </test>
 
-    <test name="Citi Test">
+    <test name="Citi Enrollment Portal Test">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="CITIN3" />
         <parameter name="password" value="15011989" />
