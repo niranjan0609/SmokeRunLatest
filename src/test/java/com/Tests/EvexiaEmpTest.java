@@ -27,7 +27,7 @@ public class EvexiaEmpTest extends TestBase {
     }
 
     @Parameters({ "username", "password" })
-    @Test
+    @Test(enabled=true)
     public void EvexiaEmpPortal(String username, String password) throws InterruptedException {
 
         log.debug("Test started...");

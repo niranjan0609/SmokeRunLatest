@@ -1,5 +1,7 @@
 package com.Tests;
 
+import com.aventstack.extentreports.Status;
+import com.base.ExtentTestManager;
 import com.base.TestBase;
 import com.pageObjects.EnrollmentPage;
 import org.apache.logging.log4j.LogManager;
@@ -13,8 +15,9 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 
-public class ZeeTest extends TestBase {
-    private static final Logger log = LogManager.getLogger(ZeeTest.class);
+public class WebAceEmpLoginTest extends TestBase {
+
+    private static final Logger log = LogManager.getLogger(WebAceEmpLoginTest.class);
 
     private WebDriver driver;
     EnrollmentPage enrollmentPage;
@@ -29,18 +32,23 @@ public class ZeeTest extends TestBase {
 
     @Parameters({ "username", "password" })
     @Test(enabled=true)
-    public void iEnrollPortal(String username, String password) throws InterruptedException {
+    public void WebAceEmployeePortalTest(String username, String password) throws InterruptedException {
 
         log.debug("Test started...");
-        // ExtentTestManager.getTest().log(Status.INFO, "On LoginPage, Enter DCB Emp ID & DOB as Password");
-        enrollmentPage.enterEmpID(username);
-        enrollmentPage.enterPassword(password);
-        enrollmentPage.clickOnSubmit();
-        // ExtentTestManager.getTest().log(Status.INFO, "Login Successful...");
-        Thread.sleep(2000);
-        enrollmentPage.clickonProceed();
-        enrollmentPage.clickOnECardZee();
+        ExtentTestManager.getTest().log(Status.INFO, "On LoginPage, Enter Emp ID & Password");
+        enrollmentPage.enterWebAceEmpID(username);
+        enrollmentPage.enterWebAceEmpPassword(password);
+        enrollmentPage.clickOnWebAceLogin();
+        ExtentTestManager.getTest().log(Status.INFO, "Login Successful...");
+        Thread.sleep(6000);
+       //String str = enrollmentPage.getGHID();
+        enrollmentPage.clickOnGetEcard();
+        ExtentTestManager.getTest().log(Status.INFO, "clicked on Ecard");
+        enrollmentPage.clickOnDownloadEcard();
+        ExtentTestManager.getTest().log(Status.INFO, "Ecard download Sucessful");
+
         String downloadFilepath = "C:\\Users\\niranjan.t\\Downloads\\TestData\\";
+
         Assert.assertTrue(isFileDownloaded(downloadFilepath, username+".pdf"), "File download failed");
 
 
@@ -56,6 +64,7 @@ public class ZeeTest extends TestBase {
     }
 
 
+
     public boolean isFileDownloaded(String downloadPath, String fileName) {
         boolean flag = false;
         File dir = new File(downloadPath);
@@ -68,9 +77,11 @@ public class ZeeTest extends TestBase {
                 dir_contents[i].delete();
             }
 
+
         }
 
         return flag;
     }
+
 
 }

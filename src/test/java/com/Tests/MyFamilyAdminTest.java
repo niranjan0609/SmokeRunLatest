@@ -29,7 +29,7 @@ public class MyFamilyAdminTest extends TestBase {
     }
 
     @Parameters({ "username", "password" })
-    @Test
+    @Test(enabled=true)
     public void iEnrollPortal(String username, String password) throws InterruptedException {
 
         log.debug("Test started...");

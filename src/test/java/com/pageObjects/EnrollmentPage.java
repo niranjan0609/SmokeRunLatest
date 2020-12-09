@@ -37,6 +37,18 @@ public class EnrollmentPage {
     private By SecondSigninBtnTxt = By.id("BtnLogin");
     private By HomePageTxt = By.xpath("/html/body/div/div[2]/div/div[3]/div[2]/div[2]/div/div[1]/div");
 
+
+    //WebAce Portal Locators
+    private By WAEmpIDTxt = By.id("txtUsrName");
+    private By WAEmpPwdTxt = By.name("txtPassword");
+    private By WALoginBtnTxt = By.id("btnLogin");
+    private By WAGetEcardLnk = By.linkText("Get E-Card");
+    private By WADwnldLink = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
+    private By GHIdTxt = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[1]");
+
+
+
+
     public EnrollmentPage(WebDriver driver) {
         // TODO Auto-generated constructor stub
         this.driver = driver;
@@ -168,5 +180,42 @@ public class EnrollmentPage {
     public void clickOnLoginNow() {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(AdminLoginBtnTxt)));
         driver.findElement(AdminLoginBtnTxt).click();
+    }
+
+    public void enterWebAceEmpID(String username) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAEmpIDTxt)));
+        driver.findElement(WAEmpIDTxt).clear();
+        driver.findElement(WAEmpIDTxt).sendKeys(username);
+    }
+
+    public void enterWebAceEmpPassword(String password) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAEmpPwdTxt)));
+        driver.findElement(WAEmpPwdTxt).clear();
+        driver.findElement(WAEmpPwdTxt).sendKeys(password);
+
+    }
+
+    public void clickOnWebAceLogin() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WALoginBtnTxt)));
+        driver.findElement(WALoginBtnTxt).click();
+    }
+
+    public void clickOnGetEcard() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAGetEcardLnk)));
+        driver.findElement(WAGetEcardLnk).click();
+    }
+
+    public void clickOnDownloadEcard() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WADwnldLink)));
+        driver.findElement(WADwnldLink).click();
+    }
+
+    public String getGHID() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(GHIdTxt)));
+        String GHId = driver.findElement(GHIdTxt).getText();
+        return GHId;
     }
 }

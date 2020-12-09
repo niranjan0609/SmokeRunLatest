@@ -32,7 +32,7 @@ public class EvexiaAdminTest extends TestBase {
     }
 
     @Parameters({ "username", "password" })
-    @Test
+    @Test(enabled=true)
     public void EvexiaAdminPortal(String username, String password) throws InterruptedException {
 
         log.debug("Test started...");
