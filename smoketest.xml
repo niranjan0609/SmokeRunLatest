@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Enrollment test suite" verbose="1" >
-    <!--
+
         <listeners>
-            <listener class-name="com.ienroll.base.TestListener"/>
-        </listeners>-->
+            <listener class-name="com.base.TestListener"/>
+        </listeners>
 
     <test name="MY Family Test">
         <parameter name="browserType" value="chrome" />
