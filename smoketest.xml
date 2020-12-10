@@ -66,4 +66,24 @@
         </classes>
     </test>
 
+    <test name="WebAce Portal Employee Login Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="GHUIAB01443423" />
+        <parameter name="password" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceEmpLoginTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Portal Retail Login Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="GHOIHYD04495640" />
+        <parameter name="password" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceEmpLoginTest" />
+        </classes>
+    </test>
+
 </suite>

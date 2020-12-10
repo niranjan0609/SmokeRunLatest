@@ -45,8 +45,12 @@ public class EnrollmentPage {
     private By WAGetEcardLnk = By.linkText("Get E-Card");
     private By WADwnldLink = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
     private By GHIdTxt = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[1]");
-
-
+    private By WAEmpLink = By.linkText("Employee ID");
+    private By GroupNameTxt = By.id("txtGroupName");
+    private By WAempIdTxt = By.id("txtGroupUsr");
+    private By WAPwdTxt  = By.id("txtGroupPassword");
+    private By WAEmpLoginLink = By.id("Button1");
+    private By WAHomeLink = By.linkText("Home");
 
 
     public EnrollmentPage(WebDriver driver) {
@@ -218,4 +222,45 @@ public class EnrollmentPage {
         String GHId = driver.findElement(GHIdTxt).getText();
         return GHId;
     }
+
+    public void ClickOnEmpID() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAEmpLink)));
+        driver.findElement(WAEmpLink).click();
+
+    }
+
+
+
+    public void enterGroupName(String groupName) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(GroupNameTxt)));
+        driver.findElement(GroupNameTxt).clear();
+        driver.findElement(GroupNameTxt).sendKeys(groupName);
+
+    }
+
+    public void enterEmpNo(String EmpId) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAempIdTxt)));
+        driver.findElement(WAempIdTxt).clear();
+        driver.findElement(WAempIdTxt).sendKeys(EmpId);
+
+    }
+
+    public void enterPasswordforEmpID(String EmpPassword) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPwdTxt)));
+        driver.findElement(WAPwdTxt).clear();
+        driver.findElement(WAPwdTxt).sendKeys(EmpPassword);
+
+    }
+
+    public void clickOnLoginEmpID() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAEmpLoginLink)));
+        driver.findElement(WAEmpLoginLink).click();
+    }
+
+    public void clickOnHome() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHomeLink)));
+        driver.findElement(WAHomeLink).click();
+
+    }
+
 }
