@@ -42,11 +42,11 @@ public class WebAceRetailLoginTest extends TestBase {
         ExtentTestManager.getTest().log(Status.INFO, "Login Successful...");
         Thread.sleep(6000);
         //String str = enrollmentPage.getGHID();
-        enrollmentPage.clickOnGetEcard();
+        enrollmentPage.clickOnGHIdForEcard();
         ExtentTestManager.getTest().log(Status.INFO, "clicked on Ecard");
         enrollmentPage.clickOnDownloadEcard();
         ExtentTestManager.getTest().log(Status.INFO, "Ecard download Sucessful");
-
+        Thread.sleep(3000);
         String downloadFilepath = "C:\\Users\\niranjan.t\\Downloads\\TestData\\";
 
         Assert.assertTrue(isFileDownloaded(downloadFilepath, username+".pdf"), "File download failed");

@@ -6,7 +6,7 @@
             <listener class-name="com.base.TestListener"/>
         </listeners>
 
-    <test name="MY Family Test Mphasis">
+   <test name="MY Family Test Mphasis">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="MPHASIS3" />
         <parameter name="appURL" value="https://ienroll.indiainsure.com/MyFamily/" />
@@ -66,23 +66,34 @@
         </classes>
     </test>
 
-    <test name="WebAce Portal Employee Login Test">
+  <test name="WebAce Portal banca Login Test">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="GHUIAB01443423" />
         <parameter name="password" value="1234" />
         <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
         <classes>
-            <class name="com.Tests.WebAceEmpLoginTest" />
+            <class name="com.Tests.WebAceBancaLoginTest" />
         </classes>
     </test>
 
-    <test name="WebAce Portal Retail Login Test">
+  <test name="WebAce Portal Retail Login Test">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="GHOIHYD04495640" />
         <parameter name="password" value="1234" />
         <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
         <classes>
-            <class name="com.Tests.WebAceEmpLoginTest" />
+            <class name="com.Tests.WebAceRetailLoginTest" />
+        </classes>
+    </test>
+
+   <test name="WebAce Portal Login with Emp ID Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="groupName" value="I SHARE BUSINESS SERVICES(INDIA) PVT LTD" />
+        <parameter name="EmpId" value="4246" />
+        <parameter name="EmpPassword" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceLoginWithEmpIDTest" />
         </classes>
     </test>
 

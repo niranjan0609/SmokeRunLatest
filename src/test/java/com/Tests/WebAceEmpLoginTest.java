@@ -45,6 +45,7 @@ public class WebAceEmpLoginTest extends TestBase {
         enrollmentPage.clickOnGetEcard();
         ExtentTestManager.getTest().log(Status.INFO, "clicked on Ecard");
         enrollmentPage.clickOnDownloadEcard();
+        Thread.sleep(3000);
         ExtentTestManager.getTest().log(Status.INFO, "Ecard download Sucessful");
 
         String downloadFilepath = "C:\\Users\\niranjan.t\\Downloads\\TestData\\";

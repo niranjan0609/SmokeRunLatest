@@ -42,15 +42,27 @@ public class EnrollmentPage {
     private By WAEmpIDTxt = By.id("txtUsrName");
     private By WAEmpPwdTxt = By.name("txtPassword");
     private By WALoginBtnTxt = By.id("btnLogin");
-    private By WAGetEcardLnk = By.linkText("Get E-Card");
+    private By WAGetEcardLnk = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[7]/a[1]");
+    private By GHIdforEcardtxt = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div[1]/table/thead/tr/th[1]/span");
     private By WADwnldLink = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
     private By GHIdTxt = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[1]");
-    private By WAEmpLink = By.linkText("Employee ID");
+    private By WAEmpLink = By.xpath("//*[@id=\"divLogin\"]/div[6]/ul/li[1]/a");
     private By GroupNameTxt = By.id("txtGroupName");
     private By WAempIdTxt = By.id("txtGroupUsr");
     private By WAPwdTxt  = By.id("txtGroupPassword");
     private By WAEmpLoginLink = By.id("Button1");
-    private By WAHomeLink = By.linkText("Home");
+    private By loader = By.cssSelector(".blockUI");
+    private By WApolicyDetailsLink = By.linkText("Policy Information");
+    private By profileTxt = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div/table/tbody/tr[1]/td/h1[1]");
+
+    private By WABankLink = By.xpath("//*[@id=\"divLogin\"]/div[6]/ul/li[2]/a");
+    private By WAbankNameTxt = By.id("txtbanogroup");
+    private By WAbankIdTxt = By.id("txtbano");
+    private By WAbankRadioBtn = By.name("balogradio");
+    private By WAbankPwdTxt  = By.id("txtbanopwd");
+    private By WAbankLoginLink = By.id("divBANOLogincheck");
+    private By WABankEcardLink = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[7]/a[1]");
+    private By WAbankDwnloadBtn = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
 
 
     public EnrollmentPage(WebDriver driver) {
@@ -255,12 +267,38 @@ public class EnrollmentPage {
     public void clickOnLoginEmpID() {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAEmpLoginLink)));
         driver.findElement(WAEmpLoginLink).click();
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loader)));
     }
 
-    public void clickOnHome() {
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHomeLink)));
-        driver.findElement(WAHomeLink).click();
+    public void clickOnPolicyDetails() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WApolicyDetailsLink)));
+        driver.findElement(WApolicyDetailsLink).click();
 
     }
 
+    public void clickOnGHIdForEcard() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(GHIdforEcardtxt)));
+        driver.findElement(GHIdforEcardtxt).click();
+    }
+
+    public String getAfterLoginTxt() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(profileTxt)));
+        return driver.findElement(profileTxt).getText();
+    }
+
+    public void ClickOnBankLink() {
+    }
+
+    public void enterBankName(String bankName) {
+    }
+
+    public void enterAccountNo(String bankAcNo) {
+    }
+
+    public void enterPasswordforBankAccount(String accPassword) {
+    }
+
+    public void clickOnLoginBankAccount() {
+    }
 }
