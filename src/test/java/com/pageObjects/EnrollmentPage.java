@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EnrollmentPage {
@@ -29,6 +31,7 @@ public class EnrollmentPage {
     private By pWordEvTxt = By.name("password");
     private By signinTxt = By.xpath("/html/body/div/div/div/div[3]/form/div[4]/div/div[2]/button");
     private By DashboardTxt = By.xpath("/html/body/div/div[1]/div[2]/div[2]/div[1]/div/h1");
+    private By MyFamAdminLoginNameTxt = By.id("lblUserName");
 
     //Evexia Emp Portal Locators
     private By EmailEvTxt = By.name("email");
@@ -58,11 +61,48 @@ public class EnrollmentPage {
     private By WABankLink = By.xpath("//*[@id=\"divLogin\"]/div[6]/ul/li[2]/a");
     private By WAbankNameTxt = By.id("txtbanogroup");
     private By WAbankIdTxt = By.id("txtbano");
-    private By WAbankRadioBtn = By.name("balogradio");
+    private By WAbankRadioBtn = By.xpath("//*[@id=\"banologin\"]/div/div[2]/div[3]/label[2]/span");
+    private By WAAccRadioBtn = By.xpath("//*[@id=\"accountlogin\"]/div/div[2]/div[3]/label[2]/span");
     private By WAbankPwdTxt  = By.id("txtbanopwd");
     private By WAbankLoginLink = By.id("divBANOLogincheck");
     private By WABankEcardLink = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[7]/a[1]");
     private By WAbankDwnloadBtn = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
+
+    private By WAAccountLink = By.xpath("//*[@id=\"divLogin\"]/div[6]/ul/li[3]/a");
+    private By WAAccbankNameTxt = By.id("txtaccountgroup");
+    private By WAAccbankIdTxt = By.id("txtaccountno");
+    private By WAAccbankPwdTxt = By.id("txtaccountpwd");
+    private By WAAccbankLoginLink = By.id("divaccountLogincheck");
+    private By WAAccGetEcardLink = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div/table/tbody/tr[1]/td[7]/a[1]");
+
+
+    private By WAPolicyNoLink = By.xpath("//*[@id=\"divLogin\"]/div[6]/ul/li[4]/a");
+    private By WAPolicyNoTxt = By.id("txtpolicyno");
+    private By WAPolicyInsurerNameTxt = By.id("txtpolicygroup");
+    private By WAPolicyRadioBtn = By.xpath("//*[@id=\"policylogin\"]/div/div[2]/div[4]/label[2]/span");
+    private By WAPolicyPwdTxt = By.id("txtpolicypwd");
+    private By WAPolicyLoginLink = By.id("divpolicyLogincheck");
+    private By WAPolicyClickEcardLink = By.xpath("//*[@id=\"form1\"]/div[3]/div/div[2]/div/div[1]/div[1]/table/thead/tr/th[1]/span");
+    private By WApolicyDwbldLink = By.xpath("//*[@id=\"policylogin\"]/div/div/button");
+
+    private By WAHPGetEcardLink = By.xpath("//*[@id=\"divLogin\"]/div[7]/ul/li[1]/a");
+    private By WAHPPolTypeLink = By.id("ddlSelectType");
+    private By WAHPGrpNameTxt = By.id("txtcorpgroupname");
+    private By WAHPGHPLIDTxt = By.id("txtcorpghid");
+    private By WAHPSubmitBtnLink = By.id("btnSubmitcorp");
+    private By WAHPOtpTxt = By.id("txtotpent");
+    private By WAHPOtpsubmitBtnLink = By.id("btnopt");
+    private By WAHPSelectGHPLRadioBtnLink = By.xpath("//*[@id=\"tb\"]/tbody/tr[1]/td[5]/p/label/span");
+    private By WAHPDwnldEcardfBtnLink = By.id("btndownloadEcard");
+
+    private By WAHPClaimIntimationLink = By.xpath("//*[@id=\"divLogin\"]/div[7]/ul/li[2]/a");
+    private By WACIntiSelectState = By.id("ContentPlaceHolder1_ddlStates");
+    private By WACIntiSelectCity =  By.id("ContentPlaceHolder1_ddlCity");
+    private By  WACIntiSelectHosp = By.xpath("//*[@id=\"tbNetwork\"]/tbody/tr[5]/td[1]/p/label/span");
+    private By WACIntiHospName = By.id("ContentPlaceHolder1_txtHospitalNames");
+
+    private By WAHPCheckClaimsLink = By.xpath("//*[@id=\"divLogin\"]/div[7]/ul/li[3]/a");
+    private By WACClaimMsgTxt = By.id("ContentPlaceHolder1_lblError");
 
 
     public EnrollmentPage(WebDriver driver) {
@@ -288,17 +328,248 @@ public class EnrollmentPage {
     }
 
     public void ClickOnBankLink() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WABankLink)));
+        driver.findElement(WABankLink).click();
     }
 
+    public void enterAccBankName(String bankName) {
+
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccbankNameTxt)));
+        driver.findElement(WAAccbankNameTxt).sendKeys(bankName);
+    }
     public void enterBankName(String bankName) {
-    }
 
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankNameTxt)));
+        driver.findElement(WAbankNameTxt).sendKeys(bankName);
+    }
     public void enterAccountNo(String bankAcNo) {
+
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankIdTxt)));
+        driver.findElement(WAbankIdTxt).sendKeys(bankAcNo);
     }
 
     public void enterPasswordforBankAccount(String accPassword) {
+
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankPwdTxt)));
+        driver.findElement(WAbankPwdTxt).sendKeys(accPassword);
+    }
+
+    public void enterPasswordforAccBankAccount(String accPassword) {
+
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccbankPwdTxt)));
+        driver.findElement(WAAccbankPwdTxt).sendKeys(accPassword);
     }
 
     public void clickOnLoginBankAccount() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankLoginLink)));
+        driver.findElement(WAbankLoginLink).click();
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loader)));
+    }
+
+    public void clickOnRadioBtn() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankRadioBtn)));
+        driver.findElement(WAbankRadioBtn).click();
+    }
+
+    public void clickOnBankGetEcardLink() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WABankEcardLink)));
+        driver.findElement(WABankEcardLink).click();
+    }
+
+    public void clickonBankDwnldCard() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAbankDwnloadBtn)));
+        driver.findElement(WAbankDwnloadBtn).click();
+    }
+
+    public void ClickOnAccountLink() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccountLink)));
+        driver.findElement(WAAccountLink).click();
+    }
+
+    public void enterAccountNo2(String bankAccNo) {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccbankIdTxt)));
+        driver.findElement(WAAccbankIdTxt).sendKeys(bankAccNo);
+    }
+
+    public void clickOnLoginAccBankAccount() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccbankLoginLink)));
+        driver.findElement(WAAccbankLoginLink).click();
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loader)));
+    }
+
+    public void clickOnAccRadioBtn() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccRadioBtn)));
+        driver.findElement(WAAccRadioBtn).click();
+    }
+
+    public void clickOnAccBankGetEcardLink() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAAccGetEcardLink)));
+        driver.findElement(WAAccGetEcardLink).click();
+    }
+
+    public void ClickOnPolicyNoLink() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyNoLink)));
+        driver.findElement(WAPolicyNoLink).click();
+
+    }
+
+    public void enterInsurerName(String insurerName) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyInsurerNameTxt)));
+        driver.findElement(WAPolicyInsurerNameTxt).sendKeys(insurerName);
+    }
+
+    public void enterPolicyNo(String policyNo) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyNoTxt)));
+        driver.findElement(WAPolicyNoTxt).sendKeys(policyNo);
+    }
+
+    public void clickOnPolicyRadioBtn() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyRadioBtn)));
+        driver.findElement(WAPolicyRadioBtn).click();
+    }
+
+    public void enterPasswordforPolicyNo(String accPassword) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyPwdTxt)));
+        driver.findElement(WAPolicyPwdTxt).sendKeys(accPassword);
+    }
+
+    public void clickOnLoginPolicyNo() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyLoginLink)));
+        driver.findElement(WAPolicyLoginLink).click();
+        wait.until(ExpectedConditions.invisibilityOf(driver.findElement(loader)));
+    }
+
+    public void clickOnPolicyGetEcardLink() {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAPolicyClickEcardLink)));
+        driver.findElement(WAPolicyClickEcardLink).click();
+    }
+
+    public void clickonPolicyDwnldCard() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WApolicyDwbldLink)));
+        driver.findElement(WApolicyDwbldLink).click();
+    }
+
+    public void ClickOnGetEcardHomePage() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPGetEcardLink)));
+        driver.findElement(WAHPGetEcardLink).click();
+    }
+
+    public void SelectPolicyType() throws InterruptedException {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPPolTypeLink)));
+        Select ptype = new Select(driver.findElement(WAHPPolTypeLink));
+        ptype.selectByVisibleText("Corporate Policy");
+
+        Thread.sleep(1000);
+
+        //driver.findElements(topUpTxt1Lac).get(1).click();
+    }
+
+    public void enterGroupNameHomePage(String groupName) {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPGrpNameTxt)));
+        driver.findElement(WAHPGrpNameTxt).sendKeys(groupName);
+    }
+
+    public void enterGHPLIDHomePage(String ghid) {
+
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPGHPLIDTxt)));
+        driver.findElement(WAHPGHPLIDTxt).sendKeys(ghid);
+    }
+
+    public void clickOnSubmitBtnHomePage() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPSubmitBtnLink)));
+        driver.findElement(WAHPSubmitBtnLink).click();
+
+    }
+
+    public void enterOtp(String otp) {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPOtpTxt)));
+        driver.findElement(WAHPOtpTxt).sendKeys(otp);
+    }
+
+    public void clickOnOtpSubmitBtn() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPOtpsubmitBtnLink)));
+        driver.findElement(WAHPOtpsubmitBtnLink).click();
+    }
+
+    public void selectEcardRadioBtn() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPSelectGHPLRadioBtnLink)));
+        driver.findElement(WAHPSelectGHPLRadioBtnLink).click();
+    }
+
+    public void clickOnDwnldEcardHomePage() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPDwnldEcardfBtnLink)));
+        driver.findElement(WAHPDwnldEcardfBtnLink).click();
+    }
+
+    public void ClickOnClaimIntimationHomePage() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPClaimIntimationLink)));
+        driver.findElement(WAHPClaimIntimationLink).click();
+    }
+
+    public void selectState() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WACIntiSelectState)));
+        Select state = new Select(driver.findElement(WACIntiSelectState));
+        state.selectByVisibleText("TELANGANA");
+
+        Thread.sleep(1000);
+    }
+
+    public void selectCity() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WACIntiSelectCity)));
+        Select state = new Select(driver.findElement(WACIntiSelectCity));
+        state.selectByVisibleText("HYDERABAD");
+
+        Thread.sleep(1000);
+    }
+
+    public void selectHospital() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WACIntiSelectHosp)));
+        driver.findElement(WACIntiSelectHosp).click();
+    }
+
+    public String readSelectedHospital() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WACIntiHospName)));
+       String str = driver.findElement(WACIntiHospName).getText();
+
+       Thread.sleep(4000);
+        System.out.print(str);
+       return str;
+    }
+
+    public void ClickOnCheckClaimStatusHomePage() {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WAHPCheckClaimsLink)));
+        driver.findElement(WAHPCheckClaimsLink).click();
+    }
+
+    public String readClaimsMessage() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(WACClaimMsgTxt)));
+        String errorMsg = driver.findElement(WACClaimMsgTxt).getText();
+
+        Thread.sleep(4000);
+        System.out.print(errorMsg);
+        return errorMsg;
+
+    }
+
+    public String readLoginName() throws InterruptedException {
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(MyFamAdminLoginNameTxt)));
+        String name = driver.findElement(MyFamAdminLoginNameTxt).getText();
+
+        Thread.sleep(4000);
+        System.out.print(name);
+        return name;
+
     }
 }
+

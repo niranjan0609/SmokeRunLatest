@@ -30,7 +30,7 @@ public class MyFamilyAdminTest extends TestBase {
 
     @Parameters({ "username", "password" })
     @Test(enabled=true)
-    public void iEnrollPortal(String username, String password) throws InterruptedException {
+    public void iEnrollAdminPortal(String username, String password) throws InterruptedException {
 
         log.debug("Test started...");
         // ExtentTestManager.getTest().log(Status.INFO, "On LoginPage, Enter DCB Emp ID & DOB as Password");
@@ -39,6 +39,13 @@ public class MyFamilyAdminTest extends TestBase {
         enrollmentPage.enterAdminPassword(password);
         enrollmentPage.clickOnLoginNow();
         Thread.sleep(2000);
+
+        String displayedLoginName = enrollmentPage.readLoginName();
+        Thread.sleep(6000);
+        String expectedName = "Tulasi Krishna Reddy";
+        Thread.sleep(4000);
+        Assert.assertEquals(displayedLoginName,expectedName, "Login Unsuccessful" );
+
 
     }
 

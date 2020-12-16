@@ -6,6 +6,16 @@
             <listener class-name="com.base.TestListener"/>
         </listeners>
 
+    <test name="MY Family Admin Portal Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="username" value="tulasi" />
+        <parameter name="appURL" value="https://ienroll.indiainsure.com/MyFamily/admin/" />
+        <parameter name="password" value="tulasilive" />
+        <classes>
+            <class name="com.Tests.MyFamilyAdminTest" />
+        </classes>
+    </test>
+
    <test name="MY Family Test Mphasis">
         <parameter name="browserType" value="chrome" />
         <parameter name="username" value="MPHASIS3" />
@@ -15,6 +25,8 @@
             <class name="com.Tests.MyFamilyTest" />
         </classes>
     </test>
+
+
 
     <test name="Citi Enrollment Portal Test">
         <parameter name="browserType" value="chrome" />
@@ -94,6 +106,72 @@
         <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
         <classes>
             <class name="com.Tests.WebAceLoginWithEmpIDTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Portal Login with Bank Acc Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="bankName" value="UNION BANK OF INDIA" />
+        <parameter name="bankAcNo" value="131934" />
+        <parameter name="accPassword" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebaceLoginWithBankTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Portal Login with  Account Details Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="bankName" value="UNION BANK OF INDIA" />
+        <parameter name="bankAccNo" value="12210100192964" />
+        <parameter name="accPassword" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceLoginWithAccountNoTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Portal Login with  Policy No Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="insurerName" value="THE ORIENTAL INSURANCE COMPANY LTD" />
+        <parameter name="policyNo" value="431600/48/2021/2810" />
+        <parameter name="accPassword" value="1234" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceLoginWithPolicyNoTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Ecard Download for Corporate with  OTP">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="GroupName" value="I SHARE BUSINESS SERVICES(INDIA) PVT LTD" />
+        <parameter name="GHPLID" value="GHOI1000005967" />
+        <parameter name="otp" value="919219" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceGetEcardHomePage" />
+        </classes>
+    </test>
+
+  <test name="WebAce Claim Intimation Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="GroupName" value="I SHARE BUSINESS SERVICES(INDIA) PVT LTD" />
+        <parameter name="GHPLID" value="GHOI1000005967" />
+        <parameter name="otp" value="919219" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceClaimIntimationTest" />
+        </classes>
+    </test>
+
+    <test name="WebAce Check Claims Test">
+        <parameter name="browserType" value="chrome" />
+        <parameter name="GroupName" value="I SHARE BUSINESS SERVICES(INDIA) PVT LTD" />
+        <parameter name="GHPLID" value="GHOI1000005967" />
+        <parameter name="otp" value="919219" />
+        <parameter name="appURL" value="http://webace.goodhealthtpa.in/" />
+        <classes>
+            <class name="com.Tests.WebAceCheckClaimStatusTest" />
         </classes>
     </test>
 

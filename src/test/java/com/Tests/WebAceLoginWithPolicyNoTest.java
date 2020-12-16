@@ -12,7 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class WebaceLoginWithBankTest extends TestBase {
+public class WebAceLoginWithPolicyNoTest extends TestBase {
 
     private static final Logger log = LogManager.getLogger(WebaceLoginWithBankTest.class);
 
@@ -27,34 +27,28 @@ public class WebaceLoginWithBankTest extends TestBase {
         enrollmentPage = new EnrollmentPage(driver);
     }
 
-    @Parameters({ "bankName", "bankAcNo", "accPassword" })
+    @Parameters({ "insurerName", "policyNo", "accPassword" })
     @Test(enabled=true)
-    public void WALoginWithBankDetailsTest(String bankName, String bankAcNo, String accPassword) throws InterruptedException {
+    public void WALoginWithBankDetailsTest(String insurerName, String policyNo, String accPassword) throws InterruptedException {
 
         log.debug("Test started...");
         ExtentTestManager.getTest().log(Status.INFO, "Entered Bank Details");
-        enrollmentPage.ClickOnBankLink();
+        enrollmentPage.ClickOnPolicyNoLink();
         Thread.sleep(2000);
-        enrollmentPage.enterBankName(bankName);
-        enrollmentPage.enterAccountNo(bankAcNo);
-        enrollmentPage.clickOnRadioBtn();
+        enrollmentPage.enterInsurerName(insurerName);
         Thread.sleep(2000);
-        enrollmentPage.enterPasswordforBankAccount(accPassword);
+        enrollmentPage.enterPolicyNo(policyNo);
 
-        enrollmentPage.clickOnLoginBankAccount();
+        enrollmentPage.clickOnPolicyRadioBtn();
+        Thread.sleep(3000);
+        enrollmentPage.enterPasswordforPolicyNo(accPassword);
+        enrollmentPage.clickOnLoginPolicyNo();
         Thread.sleep(6000);
-        enrollmentPage.clickOnBankGetEcardLink();
-        enrollmentPage.clickonBankDwnldCard();
+        enrollmentPage.clickOnPolicyGetEcardLink();
+        enrollmentPage.clickonPolicyDwnldCard();
 
 
-        //enrollmentPage.clickOnPolicyDetails();
 
-
-        /*String str1 = "Please update your contact details of your GOOD HEALTH PROFILE\n" +
-                "These details will be usefull in sending proper communication to you in case of any event.";
-        String str2 = enrollmentPage.getAfterLoginTxt();
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(str2, str1, "Login Successful");*/
 
         ExtentTestManager.getTest().log(Status.INFO, "Login Successful...");
 
@@ -66,5 +60,4 @@ public class WebaceLoginWithBankTest extends TestBase {
         enrollmentPage.deleteAllCookies();
 
     }
-
 }

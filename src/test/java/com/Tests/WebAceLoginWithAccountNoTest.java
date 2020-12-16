@@ -12,8 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class WebaceLoginWithBankTest extends TestBase {
-
+public class WebAceLoginWithAccountNoTest extends TestBase {
     private static final Logger log = LogManager.getLogger(WebaceLoginWithBankTest.class);
 
     private WebDriver driver;
@@ -27,23 +26,24 @@ public class WebaceLoginWithBankTest extends TestBase {
         enrollmentPage = new EnrollmentPage(driver);
     }
 
-    @Parameters({ "bankName", "bankAcNo", "accPassword" })
+    @Parameters({ "bankName", "bankAccNo", "accPassword" })
     @Test(enabled=true)
-    public void WALoginWithBankDetailsTest(String bankName, String bankAcNo, String accPassword) throws InterruptedException {
+    public void WALoginWithBankDetailsTest(String bankName, String bankAccNo, String accPassword) throws InterruptedException {
 
         log.debug("Test started...");
         ExtentTestManager.getTest().log(Status.INFO, "Entered Bank Details");
-        enrollmentPage.ClickOnBankLink();
+        enrollmentPage.ClickOnAccountLink();
         Thread.sleep(2000);
-        enrollmentPage.enterBankName(bankName);
-        enrollmentPage.enterAccountNo(bankAcNo);
-        enrollmentPage.clickOnRadioBtn();
-        Thread.sleep(2000);
-        enrollmentPage.enterPasswordforBankAccount(accPassword);
+        enrollmentPage.enterAccBankName(bankName);
 
-        enrollmentPage.clickOnLoginBankAccount();
+        enrollmentPage.enterAccountNo2(bankAccNo);
+
+        enrollmentPage.clickOnAccRadioBtn();
+        Thread.sleep(3000);
+        enrollmentPage.enterPasswordforAccBankAccount(accPassword);
+        enrollmentPage.clickOnLoginAccBankAccount();
         Thread.sleep(6000);
-        enrollmentPage.clickOnBankGetEcardLink();
+        enrollmentPage.clickOnAccBankGetEcardLink();
         enrollmentPage.clickonBankDwnldCard();
 
 
@@ -66,5 +66,4 @@ public class WebaceLoginWithBankTest extends TestBase {
         enrollmentPage.deleteAllCookies();
 
     }
-
 }
